@@ -18,7 +18,7 @@ const CURSOS = [
   {
     id: "algebra",
     nombre: "Álgebra",
-    color: "#4B5AAE",
+    color: "#5C6690",
     descripcion: "Ecuaciones, expresiones y estructuras algebraicas explicadas paso a paso.",
     modulos: [
       {
@@ -51,7 +51,7 @@ const CURSOS = [
   {
     id: "aritmetica",
     nombre: "Aritmética",
-    color: "#1F8A70",
+    color: "#4A8577",
     descripcion: "Números, operaciones y razonamiento cuantitativo desde la base.",
     modulos: [
       {
@@ -83,7 +83,7 @@ const CURSOS = [
   {
     id: "competencia-comunicativa",
     nombre: "Competencia comunicativa",
-    color: "#A13D63",
+    color: "#8C5568",
     descripcion: "Comprensión lectora, redacción y análisis de textos.",
     modulos: [
       {
@@ -115,7 +115,7 @@ const CURSOS = [
   {
     id: "fisica",
     nombre: "Física",
-    color: "#2E6F95",
+    color: "#4F7791",
     descripcion: "Movimiento, fuerzas y energía, con ejercicios resueltos.",
     modulos: [
       {
@@ -147,7 +147,7 @@ const CURSOS = [
   {
     id: "quimica",
     nombre: "Química",
-    color: "#5B8C3E",
+    color: "#6B8558",
     descripcion: "Materia, reacciones y estructura atómica explicadas con claridad.",
     modulos: [
       {
@@ -179,7 +179,7 @@ const CURSOS = [
   {
     id: "geometria",
     nombre: "Geometría",
-    color: "#C08A2E",
+    color: "#A8875A",
     descripcion: "Figuras, áreas y razonamiento espacial paso a paso.",
     modulos: [
       {
