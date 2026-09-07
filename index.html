@@ -466,9 +466,7 @@ footer{
 <body>
 
 
-<!-- ==========================
-     BOTÓN MODO OSCURO
-========================== -->
+<!-- BOTÓN MODO OSCURO -->
 
 <button
 class="theme-toggle"
@@ -518,9 +516,7 @@ a7 7 0 0 0 9.5 9.5z"/>
 </button>
 
 
-<!-- ==========================
-     HEADER
-========================== -->
+<!-- HEADER -->
 
 <header>
 
@@ -543,9 +539,7 @@ teoría, ejercicios y práctica para que avances a tu ritmo.
 <main>
 
 
-<!-- ==========================
-     VOLVER
-========================== -->
+<!-- VOLVER -->
 
 <button
 id="backButton"
@@ -557,9 +551,7 @@ onclick="goBack()">
 </button>
 
 
-<!-- ==========================
-     CURSOS
-========================== -->
+<!-- CURSOS -->
 
 <section id="coursesView">
 
@@ -679,9 +671,7 @@ Entrar al curso →
 </section>
 
 
-<!-- ==========================
-     CURSO
-========================== -->
+<!-- CURSO -->
 
 <section
 id="courseView"
@@ -695,9 +685,7 @@ class="modules">
 </section>
 
 
-<!-- ==========================
-     TEMA
-========================== -->
+<!-- TEMA -->
 
 <section
 id="lessonView"
@@ -853,8 +841,6 @@ const algebraModule1 = [
 const lessons = {
 
 
-  /* ---------- 1.1 ---------- */
-
   "algebra-1-1":{
 
     title:"Potenciación. Propiedades.",
@@ -871,8 +857,6 @@ const lessons = {
   },
 
 
-  /* ---------- 1.2 ---------- */
-
   "algebra-1-2":{
 
     title:"Ecuaciones Exponenciales. Propiedades.",
@@ -888,8 +872,6 @@ const lessons = {
 
   },
 
-
-  /* ---------- 2.1 ---------- */
 
   "algebra-1-3":{
 
@@ -912,8 +894,6 @@ const lessons = {
   },
 
 
-  /* ---------- 2.2 ---------- */
-
   "algebra-1-4":{
 
     title:"Grados: Grado relativo y grado absoluto, de un monomio y de un polinomio.",
@@ -922,8 +902,6 @@ const lessons = {
 
   },
 
-
-  /* ---------- 2.3 ---------- */
 
   "algebra-1-5":{
 
@@ -934,8 +912,6 @@ const lessons = {
   },
 
 
-  /* ---------- 3.1 ---------- */
-
   "algebra-1-6":{
 
     title:"Productos notables: Cuadrado de un binomio y trinomio cuadrado perfecto, Identidad de Legendre y de Lagrange.",
@@ -945,8 +921,6 @@ const lessons = {
   },
 
 
-  /* ---------- 3.2 ---------- */
-
   "algebra-1-7":{
 
     title:"Cubo de un binomio, Diferencia de cuadrados, Suma y diferencia de cubos, Identidad de Argand, Cuadrado de un trinomio y Cubo de un trinomio.",
@@ -955,8 +929,6 @@ const lessons = {
 
   },
 
-
-  /* ---------- 4.1 ---------- */
 
   "algebra-1-8":{
 
@@ -974,8 +946,6 @@ const lessons = {
   },
 
 
-  /* ---------- 4.2 ---------- */
-
   "algebra-1-9":{
 
     title:"Teorema del resto.",
@@ -991,8 +961,6 @@ const lessons = {
 
   },
 
-
-  /* ---------- 4.3 ---------- */
 
   "algebra-1-10":{
 
@@ -1013,57 +981,6 @@ let currentCourse = null;
 
 
 /* ==========================
-   CONVERTIR YOUTUBE
-========================== */
-
-function youtubeEmbed(url){
-
-  if(!url){
-    return "";
-  }
-
-
-  let videoId = "";
-
-
-  if(url.includes("watch?v=")){
-
-    videoId =
-    url.split("watch?v=")[1]
-    .split("&")[0];
-
-  }
-
-
-  else if(url.includes("youtu.be/")){
-
-    videoId =
-    url.split("youtu.be/")[1]
-    .split("?")[0];
-
-  }
-
-
-  else if(url.includes("/embed/")){
-
-    videoId =
-    url.split("/embed/")[1]
-    .split("?")[0];
-
-  }
-
-
-  if(!videoId){
-    return "";
-  }
-
-
-  return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
-
-}
-
-
-/* ==========================
    OBTENER ID DE YOUTUBE
 ========================== */
 
@@ -1073,7 +990,6 @@ function youtubeVideoId(url){
     return "";
   }
 
-
   if(url.includes("watch?v=")){
 
     return url
@@ -1081,7 +997,6 @@ function youtubeVideoId(url){
       .split("&")[0];
 
   }
-
 
   if(url.includes("youtu.be/")){
 
@@ -1091,7 +1006,6 @@ function youtubeVideoId(url){
 
   }
 
-
   if(url.includes("/embed/")){
 
     return url
@@ -1099,7 +1013,6 @@ function youtubeVideoId(url){
       .split("?")[0];
 
   }
-
 
   return "";
 
@@ -1114,65 +1027,49 @@ function openCourse(courseId){
 
   currentCourse = courseId;
 
-
   const course =
   courses[courseId];
-
 
   document
   .getElementById("coursesView")
   .classList.add("hidden");
 
-
   document
   .getElementById("lessonView")
   .classList.add("hidden");
-
 
   document
   .getElementById("courseView")
   .classList.remove("hidden");
 
-
   document
   .getElementById("backButton")
   .classList.remove("hidden");
-
 
   document
   .getElementById("pageTitle")
   .textContent =
   course.name;
 
-
   document
   .getElementById("pageDescription")
   .textContent =
   "Selecciona un módulo para continuar con tu preparación.";
 
-
   const container =
   document.getElementById("modulesContainer");
 
-
   container.innerHTML = "";
 
-
-  /*
-     ÁLGEBRA — MÓDULO 1
-  */
 
   if(courseId === "algebra"){
 
     const module1 =
     document.createElement("div");
 
-
     module1.className="module";
 
-
     module1.style.gridColumn="1 / -1";
-
 
     module1.innerHTML = `
 
@@ -1192,23 +1089,15 @@ function openCourse(courseId){
 
     `;
 
-
     container.appendChild(module1);
 
-
-    /*
-       MÓDULOS 2, 3 Y 4
-       TODAVÍA SIN CONTENIDO
-    */
 
     for(let m=2;m<=4;m++){
 
       const module =
       document.createElement("div");
 
-
       module.className="module";
-
 
       module.innerHTML = `
 
@@ -1228,30 +1117,21 @@ function openCourse(courseId){
 
       `;
 
-
       container.appendChild(module);
 
     }
-
 
     return;
 
   }
 
 
-  /*
-     RESTO DE CURSOS
-     ESTRUCTURA ORIGINAL
-  */
-
   for(let m=1;m<=4;m++){
 
     const module =
     document.createElement("div");
 
-
     module.className="module";
-
 
     module.innerHTML = `
 
@@ -1271,7 +1151,6 @@ function openCourse(courseId){
 
     `;
 
-
     container.appendChild(module);
 
   }
@@ -1286,7 +1165,6 @@ function openCourse(courseId){
 function createAlgebraModule1(){
 
   let html="";
-
 
   algebraModule1.forEach(section=>{
 
@@ -1306,12 +1184,7 @@ function createAlgebraModule1(){
 
     `;
 
-
     section.topics.forEach(topic=>{
-
-      const key =
-      `algebra-1-${topic.id}`;
-
 
       html += `
 
@@ -1333,7 +1206,6 @@ function createAlgebraModule1(){
 
     });
 
-
     html += `
 
         </div>
@@ -1343,7 +1215,6 @@ function createAlgebraModule1(){
     `;
 
   });
-
 
   return html;
 
@@ -1358,16 +1229,13 @@ function createTopics(courseId,module){
 
   let html="";
 
-
   for(let t=1;t<=4;t++){
 
     const key =
     `${courseId}-${module}-${t}`;
 
-
     let title =
     `Tema ${t}`;
-
 
     if(
       lessons[key] &&
@@ -1378,7 +1246,6 @@ function createTopics(courseId,module){
       lessons[key].title;
 
     }
-
 
     html += `
 
@@ -1393,7 +1260,6 @@ function createTopics(courseId,module){
     `;
 
   }
-
 
   return html;
 
@@ -1433,15 +1299,12 @@ function createVideos(videos){
     const videoId =
     youtubeVideoId(video.url);
 
-
     if(!videoId){
       return;
     }
 
-
     const containerId =
     `video-container-${videoId}-${index}`;
-
 
     html += `
 
@@ -1521,30 +1384,27 @@ function loadYouTubeVideo(videoId,containerId){
   const container =
   document.getElementById(containerId);
 
-
   if(!container){
     return;
   }
 
 
+  /*
+     REPRODUCTOR OFICIAL DE YOUTUBE
+     DENTRO DE LA PÁGINA
+  */
+
   container.innerHTML = `
 
     <iframe
 
-      src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1"
+      src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1"
 
       title="Video de YouTube"
 
-      loading="eager"
+      loading="lazy"
 
-      allow="
-        accelerometer;
-        autoplay;
-        clipboard-write;
-        encrypted-media;
-        gyroscope;
-        picture-in-picture;
-        web-share"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 
       allowfullscreen>
 
@@ -1568,36 +1428,29 @@ function openLesson(
   const course =
   courses[courseId];
 
-
   const key =
   `${courseId}-${module}-${topic}`;
 
-
   const lesson =
   lessons[key] || {};
-
 
   document
   .getElementById("courseView")
   .classList.add("hidden");
 
-
   document
   .getElementById("lessonView")
   .classList.remove("hidden");
-
 
   document
   .getElementById("pageTitle")
   .textContent =
   course.name;
 
-
   document
   .getElementById("pageDescription")
   .textContent =
   `Módulo ${module} · Tema ${topic}`;
-
 
   document
   .getElementById("lessonContent")
@@ -1692,7 +1545,6 @@ function goBack(){
   .classList
   .contains("hidden");
 
-
   const courseVisible =
   !document
   .getElementById("courseView")
@@ -1707,24 +1559,20 @@ function goBack(){
     .classList
     .add("hidden");
 
-
     document
     .getElementById("courseView")
     .classList
     .remove("hidden");
-
 
     document
     .getElementById("pageTitle")
     .textContent =
     courses[currentCourse].name;
 
-
     document
     .getElementById("pageDescription")
     .textContent =
     "Selecciona un módulo para continuar con tu preparación.";
-
 
     return;
 
@@ -1738,24 +1586,20 @@ function goBack(){
     .classList
     .add("hidden");
 
-
     document
     .getElementById("coursesView")
     .classList
     .remove("hidden");
-
 
     document
     .getElementById("backButton")
     .classList
     .add("hidden");
 
-
     document
     .getElementById("pageTitle")
     .textContent =
     "Elige un curso para continuar tu preparación";
-
 
     document
     .getElementById("pageDescription")
@@ -1776,14 +1620,11 @@ function goBack(){
   const root =
   document.documentElement;
 
-
   const toggle =
   document.getElementById("themeToggle");
 
-
   const sun =
   document.getElementById("iconSun");
-
 
   const moon =
   document.getElementById("iconMoon");
@@ -1806,12 +1647,10 @@ function goBack(){
       theme
     );
 
-
     sun.style.display =
     theme==="dark"
     ? "none"
     : "block";
-
 
     moon.style.display =
     theme==="dark"
@@ -1836,7 +1675,6 @@ function goBack(){
       root.getAttribute(
         "data-theme"
       );
-
 
       applyTheme(
         current==="dark"
