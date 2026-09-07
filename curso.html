@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Curso | Academia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+    /* =========================
+       VARIABLES
+    ========================= */
+
+    :root {
+
+        --fondo: #f5f7fb;
+        --tarjeta: #ffffff;
+        --texto: #172033;
+        --secundario: #64748b;
+        --borde: #e5e7eb;
+
+        --azul: #2563eb;
+        --azul-hover: #1d4ed8;
+        --azul-suave: #eff6ff;
+
+        --nav: #ffffff;
+
+    }
+
+
+    /* =========================
+       MODO OSCURO
+    ========================= */
+
+    body.dark {
+
+        --fondo: #0b1120;
+        --tarjeta: #1e293b;
+        --texto: #f8fafc;
+        --secundario: #94a3b8;
+        --borde: #334155;
+
+        --azul: #3b82f6;
+        --azul-hover: #60a5fa;
+        --azul-suave: #172554;
+
+        --nav: #111827;
+
+    }
+
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    * {
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+
+
+    html {
+
+        scroll-behavior: smooth;
+
+    }
+
+
+    body {
+
+        font-family:
+            'Bricolage Grotesque',
+            sans-serif;
+
+        background: var(--fondo);
+
+        color: var(--texto);
+
+        transition:
+            background .3s,
+            color .3s;
+
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+
+        height: 70px;
+
+        padding: 0 7%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        background: var(--nav);
+
+        border-bottom:
+            1px solid var(--borde);
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 100;
+
+    }
+
+
+    .logo {
+
+        font-size: 21px;
+
+        font-weight: 700;
+
+        color: var(--azul);
+
+    }
+
+
+    .nav-right {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+    }
+
+
+    .back {
+
+        text-decoration: none;
+
+        color: var(--texto);
+
+        font-weight: 500;
+
+    }
+
+
+    .theme-button {
+
+        width: 42px;
+
+        height: 42px;
+
+        border-radius: 50%;
+
+        border: 1px solid var(--borde);
+
+        background: var(--tarjeta);
+
+        cursor: pointer;
+
+        font-size: 19px;
+
+    }
+
+
+    /* =========================
+       ENCABEZADO DEL CURSO
+    ========================= */
+
+    .course-header {
+
+        padding: 70px 7% 45px;
+
+        background:
+
+            radial-gradient(
+                circle at top right,
+                rgba(37,99,235,.15),
+                transparent 35%
+            ),
+
+            var(--fondo);
+
+    }
+
+
+    .course-header-content {
+
+        max-width: 1100px;
+
+        margin: auto;
+
+    }
+
+
+    .course-tag {
+
+        display: inline-block;
+
+        padding: 7px 14px;
+
+        border-radius: 50px;
+
+        background: var(--azul-suave);
+
+        color: var(--azul);
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .course-header h1 {
+
+        font-size:
+            clamp(38px, 6vw, 65px);
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .course-header p {
+
+        color: var(--secundario);
+
+        font-size: 17px;
+
+    }
+
+
+    /* =========================
+       CONTENIDO
+    ========================= */
+
+    .content {
+
+        max-width: 1100px;
+
+        margin: auto;
+
+        padding: 30px 20px 80px;
+
+        display: grid;
+
+        grid-template-columns:
+            330px 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    /* =========================
+       MÓDULOS
+    ========================= */
+
+    .modules {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .module {
+
+        background: var(--tarjeta);
+
+        border:
+            1px solid var(--borde);
+
+        border-radius: 15px;
+
+        overflow: hidden;
+
+    }
+
+
+    .module-header {
+
+        width: 100%;
+
+        padding: 18px;
+
+        border: none;
+
+        background: transparent;
+
+        color: var(--texto);
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        cursor: pointer;
+
+        font-family: inherit;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
+        text-align: left;
+
+    }
+
+
+    .module-header:hover {
+
+        background: var(--azul-suave);
+
+    }
+
+
+    .arrow {
+
+        transition: transform .25s;
+
+    }
+
+
+    .module.open .arrow {
+
+        transform:
+            rotate(180deg);
+
+    }
+
+
+    .topics {
+
+        display: none;
+
+        border-top:
+            1px solid var(--borde);
+
+    }
+
+
+    .module.open .topics {
+
+        display: block;
+
+    }
+
+
+    .topic {
+
+        width: 100%;
+
+        padding: 14px 18px;
+
+        border: none;
+
+        border-bottom:
+            1px solid var(--borde);
+
+        background: transparent;
+
+        color: var(--secundario);
+
+        text-align: left;
+
+        cursor: pointer;
+
+        font-family: inherit;
+
+        transition: .2s;
+
+    }
+
+
+    .topic:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    .topic:hover {
+
+        background: var(--azul-suave);
+
+        color: var(--azul);
+
+    }
+
+
+    .topic.active {
+
+        background: var(--azul-suave);
+
+        color: var(--azul);
+
+        font-weight: 600;
+
+    }
+
+
+    /* =========================
+       REPRODUCTOR
+    ========================= */
+
+    .lesson {
+
+        background: var(--tarjeta);
+
+        border:
+            1px solid var(--borde);
+
+        border-radius: 20px;
+
+        padding: 25px;
+
+        min-height: 500px;
+
+    }
+
+
+    .lesson-title {
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .lesson-title small {
+
+        display: block;
+
+        color: var(--azul);
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        margin-bottom: 5px;
+
+    }
+
+
+    .lesson-title h2 {
+
+        font-size: 27px;
+
+    }
+
+
+    .video-container {
+
+        width: 100%;
+
+        aspect-ratio: 16 / 9;
+
+        background: #000;
+
+        border-radius: 14px;
+
+        overflow: hidden;
+
+    }
+
+
+    .video-container iframe {
+
+        width: 100%;
+
+        height: 100%;
+
+        border: none;
+
+    }
+
+
+    .no-video {
+
+        width: 100%;
+
+        height: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        color: white;
+
+        padding: 30px;
+
+    }
+
+
+    .lesson-navigation {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 10px;
+
+        margin-top: 20px;
+
+    }
+
+
+    .lesson-navigation button {
+
+        padding: 12px 18px;
+
+        border-radius: 10px;
+
+        border: 1px solid var(--borde);
+
+        background: var(--tarjeta);
+
+        color: var(--texto);
+
+        cursor: pointer;
+
+        font-family: inherit;
+
+        font-weight: 500;
+
+    }
+
+
+    .lesson-navigation button:hover {
+
+        border-color: var(--azul);
+
+        color: var(--azul);
+
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .content {
+
+            grid-template-columns: 1fr;
+
+        }
+
+        .modules {
+
+            order: 1;
+
+        }
+
+        .lesson {
+
+            order: 0;
+
+        }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+        nav {
+
+            padding: 0 5%;
+
+        }
+
+        .back {
+
+            display: none;
+
+        }
+
+        .course-header {
+
+            padding: 50px 5% 35px;
+
+        }
+
+        .content {
+
+            padding: 20px 5% 60px;
+
+        }
+
+        .lesson {
+
+            padding: 18px;
+
+        }
+
+        .lesson-title h2 {
+
+            font-size: 22px;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        ACADEMIA
+    </div>
+
+
+    <div class="nav-right">
+
+        <a
+            href="index.html"
+            class="back"
+        >
+            ← Volver a cursos
+        </a>
+
+
+        <button
+            class="theme-button"
+            id="themeButton"
+            onclick="cambiarTema()"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     ENCABEZADO
+========================= -->
+
+<header class="course-header">
+
+    <div class="course-header-content">
+
+        <div class="course-tag">
+            CURSO PREUNIVERSITARIO
+        </div>
+
+
+        <h1 id="courseTitle">
+            Cargando...
+        </h1>
+
+
+        <p id="courseDescription">
+            Preparación preuniversitaria.
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     CONTENIDO
+========================= -->
+
+<main class="content">
+
+
+    <!-- MÓDULOS -->
+
+    <aside
+        class="modules"
+        id="modulesContainer"
+    >
+
+        <!-- JavaScript colocará aquí
+             los módulos y temas -->
+
+    </aside>
+
+
+    <!-- LECCIÓN -->
+
+    <section class="lesson">
+
+
+        <div class="lesson-title">
+
+            <small>
+                CLASE
+            </small>
+
+            <h2 id="lessonTitle">
+                Selecciona un tema
+            </h2>
+
+        </div>
+
+
+        <div
+            class="video-container"
+            id="videoContainer"
+        >
+
+            <div class="no-video">
+
+                <div>
+
+                    <h3>
+                        Selecciona un tema
+                    </h3>
+
+                    <p>
+                        El video de la clase aparecerá aquí.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="lesson-navigation">
+
+            <button
+                onclick="temaAnterior()"
+                id="prevButton"
+            >
+                ← Anterior
+            </button>
+
+
+            <button
+                onclick="temaSiguiente()"
+                id="nextButton"
+            >
+                Siguiente →
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="js/cursos.js"></script>
+
+
+<script>
+
+    /* =========================
+       TEMA CLARO / OSCURO
+    ========================= */
+
+    const themeButton =
+        document.getElementById(
+            "themeButton"
+        );
+
+
+    const temaGuardado =
+        localStorage.getItem(
+            "tema"
+        );
+
+
+    if (temaGuardado === "oscuro") {
+
+        document.body.classList.add(
+            "dark"
+        );
+
+        themeButton.textContent = "☀️";
+
+    }
+
+
+    function cambiarTema() {
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+
+        if (
+            document.body.classList.contains(
+                "dark"
+            )
+        ) {
+
+            themeButton.textContent = "☀️";
+
+            localStorage.setItem(
+                "tema",
+                "oscuro"
+            );
+
+        } else {
+
+            themeButton.textContent = "🌙";
+
+            localStorage.setItem(
+                "tema",
+                "claro"
+            );
+
+        }
+
+    }
+
+</script>
+```
+
+</body>
+</html>
