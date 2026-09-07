@@ -1,979 +1,286 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-```
-<title>Academia Preuniversitaria</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academia — Cursos</title>
 <style>
-
-    /* ==============================
-       VARIABLES DE COLOR
-    ============================== */
-
-    :root {
-        --fondo: #f5f7fb;
-        --fondo-secundario: #ffffff;
-        --tarjeta: #ffffff;
-        --texto: #172033;
-        --texto-secundario: #64748b;
-        --borde: #e5e7eb;
-        --azul: #2563eb;
-        --azul-hover: #1d4ed8;
-        --azul-suave: #eff6ff;
-        --nav: #ffffff;
-        --footer: #172033;
-        --footer-texto: #cbd5e1;
-    }
-
-
-    /* ==============================
-       MODO OSCURO
-    ============================== */
-
-    body.dark {
-
-        --fondo: #0b1120;
-        --fondo-secundario: #111827;
-        --tarjeta: #1e293b;
-        --texto: #f8fafc;
-        --texto-secundario: #94a3b8;
-        --borde: #334155;
-        --azul: #3b82f6;
-        --azul-hover: #60a5fa;
-        --azul-suave: #172554;
-        --nav: #111827;
-        --footer: #020617;
-        --footer-texto: #94a3b8;
-
-    }
-
-
-    /* ==============================
-       CONFIGURACIÓN GENERAL
-    ============================== */
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-
-        font-family: 'Bricolage Grotesque', sans-serif;
-
-        background: var(--fondo);
-
-        color: var(--texto);
-
-        transition:
-            background 0.3s ease,
-            color 0.3s ease;
-
-    }
-
-
-    /* ==============================
-       NAVBAR
-    ============================== */
-
-    nav {
-
-        width: 100%;
-
-        padding: 18px 7%;
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        background: var(--nav);
-
-        border-bottom: 1px solid var(--borde);
-
-        position: sticky;
-
-        top: 0;
-
-        z-index: 100;
-
-        transition: background 0.3s ease;
-
-    }
-
-
-    .logo {
-
-        font-size: 22px;
-
-        font-weight: 700;
-
-        color: var(--azul);
-
-    }
-
-
-    .nav-right {
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 20px;
-
-    }
-
-
-    nav a {
-
-        text-decoration: none;
-
-        color: var(--texto);
-
-        font-weight: 500;
-
-    }
-
-
-    /* ==============================
-       BOTÓN MODO OSCURO / CLARO
-    ============================== */
-
-    .theme-button {
-
-        width: 45px;
-
-        height: 45px;
-
-        border-radius: 50%;
-
-        border: 1px solid var(--borde);
-
-        background: var(--tarjeta);
-
-        cursor: pointer;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        font-size: 20px;
-
-        transition: 0.25s;
-
-    }
-
-
-    .theme-button:hover {
-
-        transform: scale(1.08);
-
-        border-color: var(--azul);
-
-    }
-
-
-    /* ==============================
-       HERO
-    ============================== */
-
-    .hero {
-
-        min-height: 540px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        text-align: center;
-
-        padding: 80px 20px;
-
-        background:
-
-            radial-gradient(
-                circle at top right,
-                rgba(37, 99, 235, 0.15),
-                transparent 35%
-            ),
-
-            radial-gradient(
-                circle at bottom left,
-                rgba(99, 102, 241, 0.12),
-                transparent 35%
-            ),
-
-            var(--fondo);
-
-        transition: background 0.3s ease;
-
-    }
-
-
-    .hero-content {
-
-        max-width: 850px;
-
-    }
-
-
-    .tag {
-
-        display: inline-block;
-
-        padding: 8px 16px;
-
-        border-radius: 50px;
-
-        background: var(--azul-suave);
-
-        color: var(--azul);
-
-        font-size: 14px;
-
-        font-weight: 600;
-
-        margin-bottom: 20px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: clamp(42px, 7vw, 78px);
-
-        line-height: 1;
-
-        margin-bottom: 25px;
-
-        letter-spacing: -2px;
-
-    }
-
-
-    .hero h1 span {
-
-        color: var(--azul);
-
-    }
-
-
-    .hero p {
-
-        font-size: 19px;
-
-        color: var(--texto-secundario);
-
-        max-width: 650px;
-
-        margin: auto;
-
-        line-height: 1.7;
-
-    }
-
-
-    .btn {
-
-        display: inline-block;
-
-        margin-top: 35px;
-
-        padding: 15px 28px;
-
-        background: var(--azul);
-
-        color: white;
-
-        text-decoration: none;
-
-        border-radius: 12px;
-
-        font-weight: 600;
-
-        transition: 0.25s;
-
-    }
-
-
-    .btn:hover {
-
-        transform: translateY(-3px);
-
-        background: var(--azul-hover);
-
-    }
-
-
-    /* ==============================
-       CURSOS
-    ============================== */
-
-    .cursos {
-
-        padding: 90px 7%;
-
-        background: var(--fondo-secundario);
-
-        transition: background 0.3s ease;
-
-    }
-
-
-    .section-title {
-
-        text-align: center;
-
-        margin-bottom: 50px;
-
-    }
-
-
-    .section-title h2 {
-
-        font-size: 38px;
-
-        margin-bottom: 10px;
-
-    }
-
-
-    .section-title p {
-
-        color: var(--texto-secundario);
-
-    }
-
-
-    .cursos-grid {
-
-        max-width: 1100px;
-
-        margin: auto;
-
-        display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 22px;
-
-    }
-
-
-    .curso-card {
-
-        background: var(--tarjeta);
-
-        padding: 30px;
-
-        border-radius: 20px;
-
-        border: 1px solid var(--borde);
-
-        text-decoration: none;
-
-        color: var(--texto);
-
-        transition: 0.25s;
-
-    }
-
-
-    .curso-card:hover {
-
-        transform: translateY(-6px);
-
-        border-color: var(--azul);
-
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.10);
-
-    }
-
-
-    .icon {
-
-        width: 55px;
-
-        height: 55px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        background: var(--azul-suave);
-
-        border-radius: 14px;
-
-        font-size: 27px;
-
-        margin-bottom: 20px;
-
-    }
-
-
-    .curso-card h3 {
-
-        font-size: 21px;
-
-        margin-bottom: 8px;
-
-    }
-
-
-    .curso-card p {
-
-        color: var(--texto-secundario);
-
-        font-size: 14px;
-
-        line-height: 1.5;
-
-    }
-
-
-    /* ==============================
-       INFORMACIÓN
-    ============================== */
-
-    .info {
-
-        padding: 80px 7%;
-
-        background: var(--fondo);
-
-        transition: background 0.3s ease;
-
-    }
-
-
-    .info-grid {
-
-        max-width: 1100px;
-
-        margin: auto;
-
-        display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 30px;
-
-        text-align: center;
-
-    }
-
-
-    .info-item h3 {
-
-        font-size: 34px;
-
-        color: var(--azul);
-
-        margin-bottom: 5px;
-
-    }
-
-
-    .info-item p {
-
-        color: var(--texto-secundario);
-
-    }
-
-
-    /* ==============================
-       FOOTER
-    ============================== */
-
-    footer {
-
-        padding: 30px;
-
-        text-align: center;
-
-        background: var(--footer);
-
-        color: var(--footer-texto);
-
-        font-size: 14px;
-
-    }
-
-
-    /* ==============================
-       RESPONSIVE
-    ============================== */
-
-    @media (max-width: 800px) {
-
-        .cursos-grid {
-
-            grid-template-columns: repeat(2, 1fr);
-
-        }
-
-        .info-grid {
-
-            grid-template-columns: 1fr;
-
-            gap: 35px;
-
-        }
-
-    }
-
-
-    @media (max-width: 550px) {
-
-        nav {
-
-            padding: 16px 5%;
-
-        }
-
-
-        nav a {
-
-            display: none;
-
-        }
-
-
-        .hero {
-
-            min-height: 500px;
-
-            padding: 60px 20px;
-
-        }
-
-
-        .hero h1 {
-
-            font-size: 45px;
-
-        }
-
-
-        .hero p {
-
-            font-size: 16px;
-
-        }
-
-
-        .cursos {
-
-            padding: 65px 5%;
-
-        }
-
-
-        .cursos-grid {
-
-            grid-template-columns: 1fr;
-
-        }
-
-
-        .section-title h2 {
-
-            font-size: 30px;
-
-        }
-
-    }
-
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --paper:#F6F2E9;
+    --ink:#1E2A38;
+    --ink-soft:#4B5A6B;
+    --line:#D8CFBB;
+    --gold:#C08A2E;
+    --hover-bg:#EFE9DA;
+    --accent-algebra:#2F5D62;
+    --accent-aritmetica:#8A4B3E;
+    --accent-comunicativa:#5B4B7A;
+    --accent-fisica:#2C5A8A;
+    --accent-quimica:#7A6B2C;
+    --accent-geometria:#6B2C4B;
+  }
+
+  html[data-theme="dark"]{
+    --paper:#171B22;
+    --ink:#EDE9DF;
+    --ink-soft:#9BA3AE;
+    --line:#2C323C;
+    --gold:#D9A857;
+    --hover-bg:#1E232C;
+    --accent-algebra:#5FA9A0;
+    --accent-aritmetica:#C98A6C;
+    --accent-comunicativa:#A896D6;
+    --accent-fisica:#6FA3D6;
+    --accent-quimica:#C9B25A;
+    --accent-geometria:#C97BA0;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    transition:background .2s ease, color .2s ease;
+  }
+
+  .theme-toggle{
+    position:fixed;
+    top:24px;
+    right:24px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:10;
+  }
+
+  .theme-toggle svg{
+    width:18px;
+    height:18px;
+    stroke:var(--ink);
+  }
+
+  header{
+    padding:64px 24px 40px;
+    max-width:1040px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+
+  .eyebrow{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+
+  h1{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:600;
+    font-size:clamp(32px,5vw,52px);
+    line-height:1.05;
+    margin:0 0 16px;
+    max-width:14ch;
+  }
+
+  header p{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    line-height:1.6;
+    margin:0;
+  }
+
+  main{
+    max-width:1040px;
+    margin:0 auto;
+    padding:48px 24px 96px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+
+  @media (max-width:800px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .grid{grid-template-columns:1fr;}
+  }
+
+  .course{
+    background:var(--paper);
+    padding:32px 28px;
+    position:relative;
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    min-height:200px;
+    transition:background .25s ease;
+  }
+
+  .course:hover{
+    background:var(--hover-bg);
+  }
+
+  .course h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:600;
+    font-size:27px;
+    line-height:1.15;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+
+  .course .meta{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  .course .go{
+    margin-top:auto;
+    padding-top:20px;
+    font-size:13px;
+    color:var(--course-color);
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity .2s ease, transform .2s ease;
+  }
+
+  .course:hover .go{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .course::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:3px;
+    height:100%;
+    background:var(--course-color);
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:transform .25s ease;
+  }
+
+  .course:hover::before{
+    transform:scaleY(1);
+  }
+
+  footer{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 24px 64px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
 </style>
-```
-
 </head>
-
 <body>
 
-```
-<!-- ==============================
-     NAVBAR
-============================== -->
-
-<nav>
-
-    <div class="logo">
-        ACADEMIA
-    </div>
-
-
-    <div class="nav-right">
-
-        <a href="#cursos">
-            Cursos
-        </a>
-
-
-        <button
-            class="theme-button"
-            id="themeButton"
-            onclick="cambiarTema()"
-            aria-label="Cambiar tema"
-        >
-            🌙
-        </button>
-
-    </div>
-
-</nav>
-
-
-<!-- ==============================
-     HERO
-============================== -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="tag">
-            PREUNIVERSITARIO
-        </div>
-
-
-        <h1>
-
-            Prepárate para<br>
-
-            <span>
-                ingresar a la universidad.
-            </span>
-
-        </h1>
-
-
-        <p>
-
-            Aprende, practica y refuerza tus conocimientos
-            con clases organizadas por cursos, módulos y temas.
-
-        </p>
-
-
-        <a
-            href="#cursos"
-            class="btn"
-        >
-            Ver cursos →
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     CURSOS
-============================== -->
-
-<section
-    class="cursos"
-    id="cursos"
->
-
-    <div class="section-title">
-
-        <h2>
-            Nuestros cursos
-        </h2>
-
-        <p>
-            Selecciona un curso para comenzar a estudiar.
-        </p>
-
-    </div>
-
-
-    <div class="cursos-grid">
-
-
-        <!-- ÁLGEBRA -->
-
-        <a
-            href="curso.html?curso=algebra"
-            class="curso-card"
-        >
-
-            <div class="icon">
-                📐
-            </div>
-
-            <h3>
-                Álgebra
-            </h3>
-
-            <p>
-                Aprende y practica los principales temas
-                de álgebra preuniversitaria.
-            </p>
-
-        </a>
-
-
-        <!-- ARITMÉTICA -->
-
-        <a
-            href="curso.html?curso=aritmetica"
-            class="curso-card"
-        >
-
-            <div class="icon">
-                🔢
-            </div>
-
-            <h3>
-                Aritmética
-            </h3>
-
-            <p>
-                Domina números, operaciones y problemas
-                de razonamiento matemático.
-            </p>
-
-        </a>
-
-
-        <!-- COMPETENCIA COMUNICATIVA -->
-
-        <a
-            href="curso.html?curso=comunicativa"
-            class="curso-card"
-        >
-
-            <div class="icon">
-                📚
-            </div>
-
-            <h3>
-                Competencia Comunicativa
-            </h3>
-
-            <p>
-                Mejora tu comprensión lectora y
-                habilidades comunicativas.
-            </p>
-
-        </a>
-
-
-        <!-- FÍSICA -->
-
-        <a
-            href="curso.html?curso=fisica"
-            class="curso-card"
-        >
-
-            <div class="icon">
-                ⚡
-            </div>
-
-            <h3>
-                Física
-            </h3>
-
-            <p>
-                Estudia los principales conceptos y
-                problemas de física preuniversitaria.
-            </p>
-
-        </a>
-
-
-        <!-- QUÍMICA -->
-
-        <a
-            href="curso.html?curso=quimica"
-            class="curso-card"
-        >
-
-            <div class="icon">
-                🧪
-            </div>
-
-            <h3>
-                Química
-            </h3>
-
-            <p>
-                Aprende química desde los fundamentos
-                hasta problemas de nivel preuniversitario.
-            </p>
-
-        </a>
-
-
-        <!-- GEOMETRÍA -->
-
-        <a
-            href="curso.html?curso=geometria"
-            class="curso-card"
-        >
-
-            <div class="icon">
-                📏
-            </div>
-
-            <h3>
-                Geometría
-            </h3>
-
-            <p>
-                Resuelve problemas de geometría y
-                desarrolla tu razonamiento espacial.
-            </p>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     ESTADÍSTICAS
-============================== -->
-
-<section class="info">
-
-    <div class="info-grid">
-
-
-        <div class="info-item">
-
-            <h3>
-                6
-            </h3>
-
-            <p>
-                Cursos
-            </p>
-
-        </div>
-
-
-        <div class="info-item">
-
-            <h3>
-                24
-            </h3>
-
-            <p>
-                Módulos
-            </p>
-
-        </div>
-
-
-        <div class="info-item">
-
-            <h3>
-                96
-            </h3>
-
-            <p>
-                Temas
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     FOOTER
-============================== -->
+<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
+  <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.5A8.5 8.5 0 1 1 11.5 3a7 7 0 0 0 9.5 9.5z"/></svg>
+</button>
+
+<header>
+  <div class="eyebrow">Panel de cursos</div>
+  <h1>Elige un curso para continuar tu preparación</h1>
+  <p>Cada curso está organizado en módulos y temas, con clases en video, teoría, ejercicios y práctica para que avances a tu ritmo.</p>
+</header>
+
+<main>
+  <div class="grid">
+
+    <a class="course" style="--course-color:var(--accent-algebra)" href="#" data-course="algebra">
+      <h2>Álgebra</h2>
+      <p class="meta">4 módulos · 16 temas</p>
+      <span class="go">Entrar al curso &rarr;</span>
+    </a>
+
+    <a class="course" style="--course-color:var(--accent-aritmetica)" href="#" data-course="aritmetica">
+      <h2>Aritmética</h2>
+      <p class="meta">4 módulos · 16 temas</p>
+      <span class="go">Entrar al curso &rarr;</span>
+    </a>
+
+    <a class="course" style="--course-color:var(--accent-comunicativa)" href="#" data-course="comunicativa">
+      <h2>Competencia Comunicativa</h2>
+      <p class="meta">4 módulos · 16 temas</p>
+      <span class="go">Entrar al curso &rarr;</span>
+    </a>
+
+    <a class="course" style="--course-color:var(--accent-fisica)" href="#" data-course="fisica">
+      <h2>Física</h2>
+      <p class="meta">4 módulos · 16 temas</p>
+      <span class="go">Entrar al curso &rarr;</span>
+    </a>
+
+    <a class="course" style="--course-color:var(--accent-quimica)" href="#" data-course="quimica">
+      <h2>Química</h2>
+      <p class="meta">4 módulos · 16 temas</p>
+      <span class="go">Entrar al curso &rarr;</span>
+    </a>
+
+    <a class="course" style="--course-color:var(--accent-geometria)" href="#" data-course="geometria">
+      <h2>Geometría</h2>
+      <p class="meta">4 módulos · 16 temas</p>
+      <span class="go">Entrar al curso &rarr;</span>
+    </a>
+
+  </div>
+</main>
 
 <footer>
-
-    © 2026 Academia Preuniversitaria
-
+  24 módulos · 96 temas en total
 </footer>
 
-
-<!-- ==============================
-     JAVASCRIPT DEL TEMA
-============================== -->
-
 <script>
+  (function(){
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var sun = document.getElementById('iconSun');
+    var moon = document.getElementById('iconMoon');
 
-    const themeButton =
-        document.getElementById("themeButton");
-
-
-    /* Cargar tema guardado */
-
-    const temaGuardado =
-        localStorage.getItem("tema");
-
-
-    if (temaGuardado === "oscuro") {
-
-        document.body.classList.add("dark");
-
-        themeButton.textContent = "☀️";
-
+    function prefersDark(){
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-
-    /* Cambiar tema */
-
-    function cambiarTema() {
-
-        document.body.classList.toggle("dark");
-
-
-        if (document.body.classList.contains("dark")) {
-
-            themeButton.textContent = "☀️";
-
-            localStorage.setItem(
-                "tema",
-                "oscuro"
-            );
-
-        } else {
-
-            themeButton.textContent = "🌙";
-
-            localStorage.setItem(
-                "tema",
-                "claro"
-            );
-
-        }
-
+    function applyTheme(theme){
+      root.setAttribute('data-theme', theme);
+      sun.style.display = theme === 'dark' ? 'none' : 'block';
+      moon.style.display = theme === 'dark' ? 'block' : 'none';
     }
 
+    applyTheme(prefersDark() ? 'dark' : 'light');
+
+    toggle.addEventListener('click', function(){
+      var current = root.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  })();
 </script>
-```
 
 </body>
 </html>
