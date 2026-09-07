@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi página</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        .contenedor {
-            margin-top: 100px;
-            background: white;
-            width: 350px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #666;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Academia · Cursos y videoclases</title>
+<meta name="description" content="Cursos de álgebra, aritmética, competencia comunicativa, física, química y geometría, organizados por módulos con videoclases." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-    <div class="contenedor">
-        <h1>Mi página</h1>
-        <p>Bienvenido a mi sitio web.</p>
-    </div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <p class="brand">Academia<span class="brand-dot">.</span></p>
+    <a class="yt-link" href="https://www.youtube.com/@TU_CANAL" target="_blank" rel="noopener">
+      Canal de YouTube ↗
+    </a>
+  </div>
+</header>
 
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="hero-kicker">Seis cursos, veinticuatro módulos</p>
+    <h1 class="hero-title">Aprende con las clases de mi canal, organizadas por curso y módulo.</h1>
+    <p class="hero-sub">Elige un curso, entra al módulo que necesitas y mira la videoclase sin salir de la página.</p>
+  </div>
+</section>
+
+<nav class="course-nav" aria-label="Cursos">
+  <div class="wrap course-nav-inner" id="course-tabs" role="tablist"></div>
+</nav>
+
+<main class="wrap" id="course-panels"></main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Todos los videos pertenecen al canal de YouTube de la academia.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
