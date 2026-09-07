@@ -4,9 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Academia — Cursos</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root{
@@ -27,9 +29,12 @@ html[data-theme="dark"]{
   --hover-bg:#1E232C;
 }
 
-*{box-sizing:border-box;}
+*{
+  box-sizing:border-box;
+}
 
-html,body{
+html,
+body{
   margin:0;
   padding:0;
 }
@@ -42,7 +47,10 @@ body{
   transition:background .2s ease,color .2s ease;
 }
 
-/* BOTÓN TEMA */
+
+/* ==========================
+   BOTÓN TEMA
+========================== */
 
 .theme-toggle{
   position:fixed;
@@ -67,7 +75,10 @@ body{
   stroke:var(--ink);
 }
 
-/* HEADER */
+
+/* ==========================
+   HEADER
+========================== */
 
 header{
   padding:64px 24px 40px;
@@ -99,13 +110,21 @@ header p{
   margin:0;
 }
 
+
+/* ==========================
+   MAIN
+========================== */
+
 main{
   max-width:1040px;
   margin:0 auto;
   padding:48px 24px 96px;
 }
 
-/* VOLVER */
+
+/* ==========================
+   VOLVER
+========================== */
 
 .back-button{
   border:1px solid var(--line);
@@ -123,7 +142,10 @@ main{
   background:var(--hover-bg);
 }
 
-/* CURSOS */
+
+/* ==========================
+   CURSOS
+========================== */
 
 .grid{
   display:grid;
@@ -179,7 +201,10 @@ main{
   transform:translateY(0);
 }
 
-/* MÓDULOS */
+
+/* ==========================
+   MÓDULOS
+========================== */
 
 .modules{
   display:grid;
@@ -225,7 +250,37 @@ main{
   background:var(--hover-bg);
 }
 
-/* CLASE */
+
+/* ==========================
+   BLOQUES DEL MÓDULO 1
+========================== */
+
+.module-main-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:24px;
+  margin:0 0 18px;
+}
+
+.section-number{
+  color:var(--gold);
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+.topic-number{
+  color:var(--gold);
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.topic-title{
+  line-height:1.45;
+}
+
+
+/* ==========================
+   CLASE
+========================== */
 
 .lesson{
   max-width:850px;
@@ -259,7 +314,10 @@ main{
   line-height:1.7;
 }
 
-/* VIDEOS */
+
+/* ==========================
+   VIDEOS
+========================== */
 
 .video-card{
   border:1px solid var(--line);
@@ -289,17 +347,40 @@ main{
   border:0;
 }
 
+.youtube-button{
+  display:inline-block;
+  margin-top:14px;
+  padding:10px 15px;
+  border:1px solid var(--line);
+  color:var(--ink);
+  text-decoration:none;
+  font-size:13px;
+  transition:.2s;
+}
+
+.youtube-button:hover{
+  background:var(--hover-bg);
+}
+
 .no-video{
   border:1px dashed var(--line);
   padding:25px;
   color:var(--ink-soft);
 }
 
+
+/* ==========================
+   OCULTO
+========================== */
+
 .hidden{
   display:none;
 }
 
-/* FOOTER */
+
+/* ==========================
+   FOOTER
+========================== */
 
 footer{
   max-width:1040px;
@@ -309,9 +390,13 @@ footer{
   color:var(--ink-soft);
 }
 
-/* RESPONSIVE */
+
+/* ==========================
+   RESPONSIVE
+========================== */
 
 @media(max-width:800px){
+
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -319,9 +404,11 @@ footer{
   .modules{
     grid-template-columns:1fr;
   }
+
 }
 
 @media(max-width:520px){
+
   .grid{
     grid-template-columns:1fr;
   }
@@ -338,19 +425,28 @@ footer{
   .lesson h2{
     font-size:30px;
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- BOTÓN MODO OSCURO -->
 
-<button class="theme-toggle" id="themeToggle"
+<!-- ==========================
+     BOTÓN MODO OSCURO
+========================== -->
+
+<button
+class="theme-toggle"
+id="themeToggle"
 aria-label="Cambiar tema"
 title="Cambiar tema claro/oscuro">
 
-<svg id="iconSun"
+<svg
+id="iconSun"
 viewBox="0 0 24 24"
 fill="none"
 stroke-width="1.6"
@@ -359,7 +455,8 @@ stroke-linejoin="round">
 
 <circle cx="12" cy="12" r="4"/>
 
-<path d="M12 2v2
+<path d="
+M12 2v2
 M12 20v2
 M4.9 4.9l1.4 1.4
 M17.7 17.7l1.4 1.4
@@ -370,7 +467,9 @@ M17.7 6.3l1.4-1.4"/>
 
 </svg>
 
-<svg id="iconMoon"
+
+<svg
+id="iconMoon"
 viewBox="0 0 24 24"
 fill="none"
 stroke-width="1.6"
@@ -378,18 +477,25 @@ stroke-linecap="round"
 stroke-linejoin="round"
 style="display:none">
 
-<path d="M21 12.5A8.5 8.5 0 1 1 11.5 3a7 7 0 0 0 9.5 9.5z"/>
+<path d="
+M21 12.5
+A8.5 8.5 0 1 1 11.5 3
+a7 7 0 0 0 9.5 9.5z"/>
 
 </svg>
 
 </button>
 
 
-<!-- HEADER -->
+<!-- ==========================
+     HEADER
+========================== -->
 
 <header>
 
-<div class="eyebrow">Academia</div>
+<div class="eyebrow">
+Academia
+</div>
 
 <h1 id="pageTitle">
 Elige un curso para continuar tu preparación
@@ -404,6 +510,11 @@ teoría, ejercicios y práctica para que avances a tu ritmo.
 
 
 <main>
+
+
+<!-- ==========================
+     VOLVER
+========================== -->
 
 <button
 id="backButton"
@@ -423,114 +534,163 @@ onclick="goBack()">
 
 <div class="grid">
 
-<div class="course"
+
+<div
+class="course"
 style="--course-color:#2F5D62"
 onclick="openCourse('algebra')">
 
 <h2>Álgebra</h2>
 
-<p class="meta">4 módulos · 16 temas</p>
+<p class="meta">
+4 módulos · 16 temas
+</p>
 
-<span class="go">Entrar al curso →</span>
+<span class="go">
+Entrar al curso →
+</span>
 
 </div>
 
 
-<div class="course"
+<div
+class="course"
 style="--course-color:#8A4B3E"
 onclick="openCourse('aritmetica')">
 
 <h2>Aritmética</h2>
 
-<p class="meta">4 módulos · 16 temas</p>
+<p class="meta">
+4 módulos · 16 temas
+</p>
 
-<span class="go">Entrar al curso →</span>
+<span class="go">
+Entrar al curso →
+</span>
 
 </div>
 
 
-<div class="course"
+<div
+class="course"
 style="--course-color:#5B4B7A"
 onclick="openCourse('comunicativa')">
 
 <h2>Competencia Comunicativa</h2>
 
-<p class="meta">4 módulos · 16 temas</p>
+<p class="meta">
+4 módulos · 16 temas
+</p>
 
-<span class="go">Entrar al curso →</span>
+<span class="go">
+Entrar al curso →
+</span>
 
 </div>
 
 
-<div class="course"
+<div
+class="course"
 style="--course-color:#2C5A8A"
 onclick="openCourse('fisica')">
 
 <h2>Física</h2>
 
-<p class="meta">4 módulos · 16 temas</p>
+<p class="meta">
+4 módulos · 16 temas
+</p>
 
-<span class="go">Entrar al curso →</span>
+<span class="go">
+Entrar al curso →
+</span>
 
 </div>
 
 
-<div class="course"
+<div
+class="course"
 style="--course-color:#7A6B2C"
 onclick="openCourse('quimica')">
 
 <h2>Química</h2>
 
-<p class="meta">4 módulos · 16 temas</p>
+<p class="meta">
+4 módulos · 16 temas
+</p>
 
-<span class="go">Entrar al curso →</span>
+<span class="go">
+Entrar al curso →
+</span>
 
 </div>
 
 
-<div class="course"
+<div
+class="course"
 style="--course-color:#6B2C4B"
 onclick="openCourse('geometria')">
 
 <h2>Geometría</h2>
 
-<p class="meta">4 módulos · 16 temas</p>
+<p class="meta">
+4 módulos · 16 temas
+</p>
 
-<span class="go">Entrar al curso →</span>
+<span class="go">
+Entrar al curso →
+</span>
 
 </div>
 
+
 </div>
 
 </section>
 
 
-<!-- CURSO -->
+<!-- ==========================
+     CURSO
+========================== -->
 
-<section id="courseView" class="hidden">
+<section
+id="courseView"
+class="hidden">
 
-<div id="modulesContainer" class="modules"></div>
+<div
+id="modulesContainer"
+class="modules">
+</div>
+
+</section>
+
+
+<!-- ==========================
+     TEMA
+========================== -->
+
+<section
+id="lessonView"
+class="lesson hidden">
+
+<div
+id="lessonContent">
+</div>
 
 </section>
 
-
-<!-- TEMA -->
-
-<section id="lessonView" class="lesson hidden">
-
-<div id="lessonContent"></div>
-
-</section>
 
 </main>
 
 
 <footer>
+
 24 módulos · 96 temas en total
+
 </footer>
 
 
 <script>
+
 
 /* ==========================
    CURSOS
@@ -538,148 +698,277 @@ onclick="openCourse('geometria')">
 
 const courses = {
 
-algebra:{
-name:"Álgebra"
-},
+  algebra:{
+    name:"Álgebra"
+  },
 
-aritmetica:{
-name:"Aritmética"
-},
+  aritmetica:{
+    name:"Aritmética"
+  },
 
-comunicativa:{
-name:"Competencia Comunicativa"
-},
+  comunicativa:{
+    name:"Competencia Comunicativa"
+  },
 
-fisica:{
-name:"Física"
-},
+  fisica:{
+    name:"Física"
+  },
 
-quimica:{
-name:"Química"
-},
+  quimica:{
+    name:"Química"
+  },
 
-geometria:{
-name:"Geometría"
-}
+  geometria:{
+    name:"Geometría"
+  }
 
 };
+
+
+/* ==========================
+   ESTRUCTURA DEL MÓDULO 1
+========================== */
+
+const algebraModule1 = [
+
+  {
+    number:"1",
+    title:"POTENCIACIÓN",
+
+    topics:[
+      {
+        id:1,
+        title:"Potenciación. Propiedades."
+      },
+
+      {
+        id:2,
+        title:"Ecuaciones Exponenciales. Propiedades."
+      }
+    ]
+  },
+
+
+  {
+    number:"2",
+    title:"POLINOMIOS",
+
+    topics:[
+      {
+        id:3,
+        title:"Polinomios: Valor numérico, suma de coeficientes y término independiente."
+      },
+
+      {
+        id:4,
+        title:"Grados: Grado relativo y grado absoluto, de un monomio y de un polinomio."
+      },
+
+      {
+        id:5,
+        title:"Polinomios especiales: homogéneos, ordenados, completos, completos y ordenados, polinomios idénticos y polinomios idénticamente nulos."
+      }
+    ]
+  },
+
+
+  {
+    number:"3",
+    title:"PRODUCTOS NOTABLES",
+
+    topics:[
+      {
+        id:6,
+        title:"Productos notables: Cuadrado de un binomio y trinomio cuadrado perfecto, Identidad de Legendre y de Lagrange."
+      },
+
+      {
+        id:7,
+        title:"Cubo de un binomio, Diferencia de cuadrados, Suma y diferencia de cubos, Identidad de Argand, Cuadrado de un trinomio y Cubo de un trinomio."
+      }
+    ]
+  },
+
+
+  {
+    number:"4",
+    title:"DIVISIÓN DE POLINOMIOS",
+
+    topics:[
+      {
+        id:8,
+        title:"División de polinomios. Algoritmo de la división. Método de Horner y Método de Ruffini."
+      },
+
+      {
+        id:9,
+        title:"Teorema del resto."
+      },
+
+      {
+        id:10,
+        title:"Cocientes notables. Casos. Propiedades. Término cualquiera del cociente notable."
+      }
+    ]
+  }
+
+];
 
 
 /* ==========================
    TEMAS Y VIDEOS
 ========================== */
 
-/*
-
-Para agregar contenido a un tema usamos:
-
-"algebra-1-1": {
-
-  title:"Nombre del tema",
-
-  videos:[
-
-    {
-      titulo:"Clase 1",
-      url:"https://www.youtube.com/watch?v=XXXXXXXX"
-    },
-
-    {
-      titulo:"Clase 2",
-      url:"https://www.youtube.com/watch?v=YYYYYYYY"
-    }
-
-  ],
-
-  teoria:"Texto de la teoría",
-
-  ejemplos:"Texto de los ejemplos",
-
-  ejercicios:"Texto de los ejercicios"
-
-}
-
-*/
-
 const lessons = {
 
-  "algebra-1-1": {
-    title: "Potenciación. Propiedades.",
-    videos: [
+
+  /* ---------- 1.1 ---------- */
+
+  "algebra-1-1":{
+
+    title:"Potenciación. Propiedades.",
+
+    videos:[
+
       {
-        titulo: "Teoría de exponentes",
-        url: "https://youtu.be/sPhTred0z-g"
+        titulo:"Teoría de exponentes",
+        url:"https://youtu.be/sPhTred0z-g"
       }
+
     ]
+
   },
 
-  "algebra-1-2": {
-    title: "Ecuaciones Exponenciales. Propiedades.",
-    videos: [
+
+  /* ---------- 1.2 ---------- */
+
+  "algebra-1-2":{
+
+    title:"Ecuaciones Exponenciales. Propiedades.",
+
+    videos:[
+
       {
-        titulo: "Ecuaciones exponenciales y productos notables",
-        url: "https://www.youtube.com/watch?v=XpYIkjrr7Z4"
+        titulo:"Ecuaciones exponenciales y productos notables",
+        url:"https://www.youtube.com/watch?v=sf8VCOHRQ_0"
       }
+
     ]
+
   },
 
-  "algebra-2-1": {
-    title: "Polinomios: Valor numérico, suma de coeficientes y término independiente.",
-    videos: [
+
+  /* ---------- 2.1 ---------- */
+
+  "algebra-1-3":{
+
+    title:"Polinomios: Valor numérico, suma de coeficientes y término independiente.",
+
+    videos:[
+
       {
-        titulo: "Polinomios",
-        url: "https://youtu.be/C6iuo2d1Vds"
+        titulo:"Polinomios",
+        url:"https://youtu.be/C6iuo2d1Vds"
       },
+
       {
-        titulo: "Ejercicios: Polinomios y valor numérico",
-        url: "https://www.youtube.com/watch?v=f5K9ELZI664"
+        titulo:"Ejercicios: Polinomios y valor numérico",
+        url:"https://www.youtube.com/watch?v=f5K9ELZI664"
       }
+
     ]
+
   },
 
-  "algebra-2-2": {
-    title: "Grados: Grado relativo y grado absoluto.",
-    videos: []
+
+  /* ---------- 2.2 ---------- */
+
+  "algebra-1-4":{
+
+    title:"Grados: Grado relativo y grado absoluto, de un monomio y de un polinomio.",
+
+    videos:[]
+
   },
 
-  "algebra-2-3": {
-    title: "Polinomios especiales.",
-    videos: []
+
+  /* ---------- 2.3 ---------- */
+
+  "algebra-1-5":{
+
+    title:"Polinomios especiales.",
+
+    videos:[]
+
   },
 
-  "algebra-3-1": {
-    title: "Productos notables.",
-    videos: []
+
+  /* ---------- 3.1 ---------- */
+
+  "algebra-1-6":{
+
+    title:"Productos notables: Cuadrado de un binomio y trinomio cuadrado perfecto, Identidad de Legendre y de Lagrange.",
+
+    videos:[]
+
   },
 
-  "algebra-3-2": {
-    title: "Productos notables.",
-    videos: []
+
+  /* ---------- 3.2 ---------- */
+
+  "algebra-1-7":{
+
+    title:"Cubo de un binomio, Diferencia de cuadrados, Suma y diferencia de cubos, Identidad de Argand, Cuadrado de un trinomio y Cubo de un trinomio.",
+
+    videos:[]
+
   },
 
-  "algebra-4-1": {
-    title: "División de polinomios.",
-    videos: [
+
+  /* ---------- 4.1 ---------- */
+
+  "algebra-1-8":{
+
+    title:"División de polinomios. Algoritmo de la división. Método de Horner y Método de Ruffini.",
+
+    videos:[
+
       {
-        titulo: "División de polinomios",
-        url: "https://www.youtube.com/watch?v=waTR59AxPjk"
+        titulo:"División de polinomios",
+        url:"https://www.youtube.com/watch?v=XpYIkjrr7Z4"
       }
+
     ]
+
   },
 
-  "algebra-4-2": {
-    title: "Teorema del resto.",
-    videos: [
+
+  /* ---------- 4.2 ---------- */
+
+  "algebra-1-9":{
+
+    title:"Teorema del resto.",
+
+    videos:[
+
       {
-        titulo: "Teorema del resto",
-        url: "https://www.youtube.com/watch?v=sf8VCOHRQ_0"
+        titulo:"Teorema del resto",
+        url:"https://www.youtube.com/watch?v=waTR59AxPjk"
       }
+
     ]
+
   },
 
-  "algebra-4-3": {
-    title: "Cocientes notables.",
-    videos: []
+
+  /* ---------- 4.3 ---------- */
+
+  "algebra-1-10":{
+
+    title:"Cocientes notables. Casos. Propiedades. Término cualquiera del cociente notable.",
+
+    videos:[]
+
   }
 
 };
@@ -702,6 +991,7 @@ function youtubeEmbed(url){
     return "";
   }
 
+
   let videoId = "";
 
 
@@ -713,6 +1003,7 @@ function youtubeEmbed(url){
 
   }
 
+
   else if(url.includes("youtu.be/")){
 
     videoId =
@@ -720,6 +1011,7 @@ function youtubeEmbed(url){
     .split("?")[0];
 
   }
+
 
   else if(url.includes("/embed/")){
 
@@ -735,7 +1027,50 @@ function youtubeEmbed(url){
   }
 
 
-  return `https://www.youtube.com/embed/${videoId}`;
+  return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+
+}
+
+
+/* ==========================
+   OBTENER ID DE YOUTUBE
+========================== */
+
+function youtubeVideoId(url){
+
+  if(!url){
+    return "";
+  }
+
+
+  if(url.includes("watch?v=")){
+
+    return url
+      .split("watch?v=")[1]
+      .split("&")[0];
+
+  }
+
+
+  if(url.includes("youtu.be/")){
+
+    return url
+      .split("youtu.be/")[1]
+      .split("?")[0];
+
+  }
+
+
+  if(url.includes("/embed/")){
+
+    return url
+      .split("/embed/")[1]
+      .split("?")[0];
+
+  }
+
+
+  return "";
 
 }
 
@@ -748,7 +1083,9 @@ function openCourse(courseId){
 
   currentCourse = courseId;
 
-  const course = courses[courseId];
+
+  const course =
+  courses[courseId];
 
 
   document
@@ -773,7 +1110,8 @@ function openCourse(courseId){
 
   document
   .getElementById("pageTitle")
-  .textContent = course.name;
+  .textContent =
+  course.name;
 
 
   document
@@ -789,6 +1127,92 @@ function openCourse(courseId){
   container.innerHTML = "";
 
 
+  /*
+     ÁLGEBRA — MÓDULO 1
+  */
+
+  if(courseId === "algebra"){
+
+    const module1 =
+    document.createElement("div");
+
+
+    module1.className="module";
+
+
+    module1.style.gridColumn="1 / -1";
+
+
+    module1.innerHTML = `
+
+      <div class="module-number">
+        MÓDULO 1
+      </div>
+
+      <h2 class="module-main-title">
+        Álgebra — Módulo 1
+      </h2>
+
+      <div class="topic-list">
+
+        ${createAlgebraModule1()}
+
+      </div>
+
+    `;
+
+
+    container.appendChild(module1);
+
+
+    /*
+       MÓDULOS 2, 3 Y 4
+       TODAVÍA SIN CONTENIDO
+    */
+
+    for(let m=2;m<=4;m++){
+
+      const module =
+      document.createElement("div");
+
+
+      module.className="module";
+
+
+      module.innerHTML = `
+
+        <div class="module-number">
+          MÓDULO ${m}
+        </div>
+
+        <h2>
+          Módulo ${m}
+        </h2>
+
+        <div class="no-video">
+
+          Contenido próximamente.
+
+        </div>
+
+      `;
+
+
+      container.appendChild(module);
+
+    }
+
+
+    return;
+
+  }
+
+
+  /*
+     RESTO DE CURSOS
+     ESTRUCTURA ORIGINAL
+  */
+
   for(let m=1;m<=4;m++){
 
     const module =
@@ -801,16 +1225,16 @@ function openCourse(courseId){
     module.innerHTML = `
 
       <div class="module-number">
-      MÓDULO ${m}
+        MÓDULO ${m}
       </div>
 
       <h2>
-      Módulo ${m}
+        Módulo ${m}
       </h2>
 
       <div class="topic-list">
 
-      ${createTopics(courseId,m)}
+        ${createTopics(courseId,m)}
 
       </div>
 
@@ -825,7 +1249,78 @@ function openCourse(courseId){
 
 
 /* ==========================
-   CREAR TEMAS
+   CREAR MÓDULO 1 DE ÁLGEBRA
+========================== */
+
+function createAlgebraModule1(){
+
+  let html="";
+
+
+  algebraModule1.forEach(section=>{
+
+    html += `
+
+      <div class="module">
+
+        <div class="section-number">
+          ${section.number}
+        </div>
+
+        <h2 class="module-main-title">
+          ${section.title}
+        </h2>
+
+        <div class="topic-list">
+
+    `;
+
+
+    section.topics.forEach(topic=>{
+
+      const key =
+      `algebra-1-${topic.id}`;
+
+
+      html += `
+
+        <button
+        class="topic"
+        onclick="openLesson('algebra',1,${topic.id})">
+
+          <div class="topic-number">
+            ${section.number}.${topic.id <= 2 ? topic.id : ""}
+          </div>
+
+          <div class="topic-title">
+            ${topic.title}
+          </div>
+
+        </button>
+
+      `;
+
+    });
+
+
+    html += `
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  return html;
+
+}
+
+
+/* ==========================
+   CREAR TEMAS GENERALES
 ========================== */
 
 function createTopics(courseId,module){
@@ -843,7 +1338,10 @@ function createTopics(courseId,module){
     `Tema ${t}`;
 
 
-    if(lessons[key] && lessons[key].title){
+    if(
+      lessons[key] &&
+      lessons[key].title
+    ){
 
       title =
       lessons[key].title;
@@ -857,7 +1355,7 @@ function createTopics(courseId,module){
       class="topic"
       onclick="openLesson('${courseId}',${module},${t})">
 
-      ${title}
+        ${title}
 
       </button>
 
@@ -877,14 +1375,17 @@ function createTopics(courseId,module){
 
 function createVideos(videos){
 
-  if(!videos || videos.length===0){
+  if(
+    !videos ||
+    videos.length===0
+  ){
 
     return `
 
       <div class="no-video">
 
-      Todavía no hay videos disponibles
-      para este tema.
+        Todavía no hay videos disponibles
+        para este tema.
 
       </div>
 
@@ -902,6 +1403,10 @@ function createVideos(videos){
     youtubeEmbed(video.url);
 
 
+    const videoId =
+    youtubeVideoId(video.url);
+
+
     if(!embed){
       return;
     }
@@ -913,21 +1418,50 @@ function createVideos(videos){
 
         <div class="video-title">
 
-        🎥 ${video.titulo || `Video ${index+1}`}
+          🎥 ${video.titulo || `Video ${index+1}`}
 
         </div>
+
 
         <div class="video-container">
 
           <iframe
-          src="${embed}"
-          title="${video.titulo || "Video de YouTube"}"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
+
+            src="${embed}"
+
+            title="${video.titulo || "Video de YouTube"}"
+
+            loading="lazy"
+
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share"
+
+            allowfullscreen>
+
           </iframe>
 
         </div>
+
+
+        <a
+
+          class="youtube-button"
+
+          href="https://www.youtube.com/watch?v=${videoId}"
+
+          target="_blank"
+
+          rel="noopener noreferrer">
+
+          ▶ Ver directamente en YouTube
+
+        </a>
 
       </div>
 
@@ -945,7 +1479,11 @@ function createVideos(videos){
    ABRIR TEMA
 ========================== */
 
-function openLesson(courseId,module,topic){
+function openLesson(
+  courseId,
+  module,
+  topic
+){
 
   const course =
   courses[courseId];
@@ -986,12 +1524,15 @@ function openLesson(courseId,module,topic){
   .innerHTML = `
 
     <h2>
-    ${lesson.title || `Tema ${topic}`}
+
+      ${lesson.title || `Tema ${topic}`}
+
     </h2>
+
 
     <div class="lesson-meta">
 
-    ${course.name} · Módulo ${module}
+      ${course.name} · Módulo ${module}
 
     </div>
 
@@ -999,7 +1540,7 @@ function openLesson(courseId,module,topic){
     <div class="lesson-section">
 
       <h3>
-      🎥 Clases en video
+        🎥 Clases en video
       </h3>
 
       ${createVideos(lesson.videos)}
@@ -1010,12 +1551,14 @@ function openLesson(courseId,module,topic){
     <div class="lesson-section">
 
       <h3>
-      📖 Teoría
+        📖 Teoría
       </h3>
 
       <p>
-      ${lesson.teoria ||
-      "Aquí colocaremos la teoría correspondiente a este tema."}
+
+        ${lesson.teoria ||
+        "Aquí colocaremos la teoría correspondiente a este tema."}
+
       </p>
 
     </div>
@@ -1024,12 +1567,14 @@ function openLesson(courseId,module,topic){
     <div class="lesson-section">
 
       <h3>
-      🧠 Ejemplos
+        🧠 Ejemplos
       </h3>
 
       <p>
-      ${lesson.ejemplos ||
-      "Aquí colocaremos ejemplos explicados paso a paso."}
+
+        ${lesson.ejemplos ||
+        "Aquí colocaremos ejemplos explicados paso a paso."}
+
       </p>
 
     </div>
@@ -1038,12 +1583,14 @@ function openLesson(courseId,module,topic){
     <div class="lesson-section">
 
       <h3>
-      📝 Ejercicios
+        📝 Ejercicios
       </h3>
 
       <p>
-      ${lesson.ejercicios ||
-      "Aquí colocaremos ejercicios para practicar lo aprendido."}
+
+        ${lesson.ejercicios ||
+        "Aquí colocaremos ejercicios para practicar lo aprendido."}
+
       </p>
 
     </div>
@@ -1062,25 +1609,29 @@ function goBack(){
   const lessonVisible =
   !document
   .getElementById("lessonView")
-  .classList.contains("hidden");
+  .classList
+  .contains("hidden");
 
 
   const courseVisible =
   !document
   .getElementById("courseView")
-  .classList.contains("hidden");
+  .classList
+  .contains("hidden");
 
 
   if(lessonVisible){
 
     document
     .getElementById("lessonView")
-    .classList.add("hidden");
+    .classList
+    .add("hidden");
 
 
     document
     .getElementById("courseView")
-    .classList.remove("hidden");
+    .classList
+    .remove("hidden");
 
 
     document
@@ -1094,6 +1645,7 @@ function goBack(){
     .textContent =
     "Selecciona un módulo para continuar con tu preparación.";
 
+
     return;
 
   }
@@ -1103,17 +1655,20 @@ function goBack(){
 
     document
     .getElementById("courseView")
-    .classList.add("hidden");
+    .classList
+    .add("hidden");
 
 
     document
     .getElementById("coursesView")
-    .classList.remove("hidden");
+    .classList
+    .remove("hidden");
 
 
     document
     .getElementById("backButton")
-    .classList.add("hidden");
+    .classList
+    .add("hidden");
 
 
     document
@@ -1141,11 +1696,14 @@ function goBack(){
   const root =
   document.documentElement;
 
+
   const toggle =
   document.getElementById("themeToggle");
 
+
   const sun =
   document.getElementById("iconSun");
+
 
   const moon =
   document.getElementById("iconMoon");
@@ -1155,7 +1713,7 @@ function goBack(){
 
     return window.matchMedia &&
     window.matchMedia(
-    "(prefers-color-scheme: dark)"
+      "(prefers-color-scheme: dark)"
     ).matches;
 
   }
@@ -1164,49 +1722,50 @@ function goBack(){
   function applyTheme(theme){
 
     root.setAttribute(
-    "data-theme",
-    theme
+      "data-theme",
+      theme
     );
 
 
     sun.style.display =
     theme==="dark"
-    ?"none"
-    :"block";
+    ? "none"
+    : "block";
 
 
     moon.style.display =
     theme==="dark"
-    ?"block"
-    :"none";
+    ? "block"
+    : "none";
 
   }
 
 
   applyTheme(
-  prefersDark()
-  ?"dark"
-  :"light"
+    prefersDark()
+    ? "dark"
+    : "light"
   );
 
 
   toggle.addEventListener(
-  "click",
-  function(){
+    "click",
+    function(){
 
-    const current =
-    root.getAttribute(
-    "data-theme"
-    );
+      const current =
+      root.getAttribute(
+        "data-theme"
+      );
 
 
-    applyTheme(
-    current==="dark"
-    ?"light"
-    :"dark"
-    );
+      applyTheme(
+        current==="dark"
+        ? "light"
+        : "dark"
+      );
 
-  });
+    }
+  );
 
 })();
 
