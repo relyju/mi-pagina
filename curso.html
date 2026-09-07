@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso — Academia Preuniversitaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#171923;--muted:#687080;--line:#e5e7ee;--accent:#171923;--soft:#f0f2f6;--shadow:0 12px 35px rgba(20,25,40,.08)}
+[data-theme="dark"]{--bg:#0f1117;--card:#171a22;--text:#f5f7fb;--muted:#a4acbc;--line:#292e3a;--accent:#fff;--soft:#20242e;--shadow:0 12px 35px rgba(0,0,0,.28)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'Bricolage Grotesque',Arial,sans-serif;transition:.2s}a{text-decoration:none;color:inherit}
+nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:var(--card);position:sticky;top:0;z-index:10}.brand{font-weight:700;letter-spacing:.08em}.back{color:var(--muted);font-weight:600}.back:hover{color:var(--text)}#themeBtn{border:1px solid var(--line);background:var(--soft);color:var(--text);border-radius:12px;padding:10px 14px;cursor:pointer;font-size:16px}
+main{max-width:1050px;margin:auto;padding:55px 20px 80px}.intro{text-align:center;margin-bottom:42px}.eyebrow{font-size:13px;font-weight:700;letter-spacing:.15em;color:var(--muted)}h1{font-size:clamp(38px,6vw,64px);margin:10px 0 12px;line-height:1}.description{max-width:650px;margin:auto;color:var(--muted);font-size:17px;line-height:1.6}
+.modules{display:grid;gap:14px}.module{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.module-header{width:100%;border:0;background:transparent;color:var(--text);padding:23px 25px;display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer}.module-header:hover{background:var(--soft)}.module-left{display:flex;align-items:center;gap:17px}.module-number{width:44px;height:44px;border-radius:13px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:700}.module-name{font-size:21px;font-weight:700}.module-count{font-size:13px;color:var(--muted);margin-top:3px}.chevron{font-size:22px;color:var(--muted);transition:.2s}.module.open .chevron{transform:rotate(180deg)}
+.topics{display:none;border-top:1px solid var(--line);padding:8px 14px 14px}.module.open .topics{display:block}.topic{width:100%;border:0;background:transparent;color:var(--text);padding:17px 14px;border-radius:13px;display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer}.topic:hover,.topic.active{background:var(--soft)}.topic-info{display:flex;gap:13px;align-items:center}.topic-num{color:var(--muted);font-size:13px;min-width:25px}.topic-title{font-size:16px;font-weight:600}.play{font-size:14px;color:var(--muted)}
+.lesson{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}.lesson-label{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.12em}.lesson h2{margin:8px 0 22px;font-size:28px}.video{width:100%;aspect-ratio:16/9;background:#090a0d;border-radius:16px;overflow:hidden;display:grid;place-items:center;color:#aeb4c1;text-align:center}.video iframe{width:100%;height:100%;border:0}.empty strong{color:#fff;display:block;margin-bottom:5px}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:18px}.controls button{border:1px solid var(--line);background:var(--soft);color:var(--text);padding:12px 17px;border-radius:12px;font-family:inherit;font-weight:600;cursor:pointer}.controls button:hover{opacity:.8}.controls button:disabled{opacity:.35;cursor:not-allowed}
+@media(max-width:650px){nav{padding:0 18px}.back{font-size:14px}main{padding:38px 14px 60px}.module-header{padding:19px}.module-name{font-size:18px}.module-number{width:40px;height:40px}.topic{padding:15px 8px}.topic-title{font-size:14px}.lesson{padding:17px}.lesson h2{font-size:22px}.controls button{font-size:13px;padding:10px 12px}}
+</style>
+</head>
+<body>
+<nav><a class="back" href="index.html">← Volver a cursos</a><div class="brand">ACADEMIA</div><button id="themeBtn" aria-label="Cambiar tema">☾</button></nav>
+<main>
+<section class="intro"><div class="eyebrow">CURSO PREUNIVERSITARIO</div><h1 id="courseTitle">Curso</h1><p class="description" id="courseDescription"></p></section>
+<section id="modulesContainer" class="modules"></section>
+<section class="lesson">
+<div class="lesson-label">CLASE ACTUAL</div><h2 id="lessonTitle">Selecciona un tema</h2>
+<div id="videoContainer" class="video"><div>Selecciona un tema para comenzar.</div></div>
+<div class="controls"><button id="prevBtn" onclick="temaAnterior()">← Anterior</button><button id="nextBtn" onclick="temaSiguiente()">Siguiente →</button></div>
+</section>
+</main>
+<script>
+const saved=localStorage.getItem('tema');if(saved==='dark')document.documentElement.setAttribute('data-theme','dark');
+const btn=document.getElementById('themeBtn');function updateThemeIcon(){btn.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀':'☾'}updateThemeIcon();btn.onclick=()=>{const dark=document.documentElement.getAttribute('data-theme')==='dark';document.documentElement.setAttribute('data-theme',dark?'light':'dark');localStorage.setItem('tema',dark?'light':'dark');updateThemeIcon()};
+</script>
+<script src="js/cursos.js"></script>
+</body>
+</html>
