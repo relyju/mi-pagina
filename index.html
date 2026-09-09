@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula de Estudio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2434;
+    --ink-soft:#4A5266;
+    --paper:#F5F4EF;
+    --paper-line: rgba(30,36,52,0.08);
+    --card-bg:#FFFFFF;
+    --radius: 4px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.5;
+  }
+
+  h1, h2, h3{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    margin:0;
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header{
+    border-bottom: 1px solid var(--paper-line);
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 27px,
+        var(--paper-line) 28px
+      );
+  }
+
+  .header-inner{
+    max-width: 900px;
+    margin:0 auto;
+    padding: 22px 24px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .brand{
+    font-family:'Source Serif 4', serif;
+    font-weight:700;
+    font-size:1.3rem;
+    letter-spacing:-0.01em;
+  }
+
+  .breadcrumb{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+
+  .breadcrumb button{
+    background:none;
+    border:none;
+    font:inherit;
+    color:var(--ink-soft);
+    cursor:pointer;
+    padding:0;
+    text-decoration:underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color .15s ease;
+  }
+  .breadcrumb button:hover{ text-decoration-color: var(--ink-soft); }
+  .breadcrumb .sep{ margin: 0 6px; color: var(--paper-line); }
+  .breadcrumb .current{ color: var(--ink); font-weight:500; }
+
+  /* ---------- MAIN ---------- */
+  main{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .hero h1{
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height:1.15;
+    max-width: 16ch;
+  }
+
+  .hero p{
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin-top: 12px;
+    font-size:1.02rem;
+  }
+
+  /* ---------- COURSE GRID ---------- */
+  .course-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--paper-line);
+    border: 1px solid var(--paper-line);
+    margin-top: 36px;
+  }
+
+  .course-card{
+    background: var(--card-bg);
+    padding: 22px 20px;
+    cursor:pointer;
+    border:none;
+    text-align:left;
+    font-family:inherit;
+    color: inherit;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    min-height: 130px;
+    justify-content:space-between;
+    transition: background .15s ease;
+  }
+
+  .course-card:hover{ background: #FBFAF7; }
+
+  .course-card .dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .course-card .name{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size: 1.15rem;
+  }
+
+  .course-card .meta{
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- LIST VIEWS (modules / topics) ---------- */
+  .list-header{
+    margin-top: 4px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--accent, var(--ink));
+  }
+
+  .list-header .kicker{
+    font-size:0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .list-header h2{
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin-top: 4px;
+  }
+
+  .item-list{
+    margin-top: 24px;
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .item-row{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap: 18px;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--paper-line);
+    background:none;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    text-align:left;
+    font-family:inherit;
+    cursor:pointer;
+    color: inherit;
+    transition: padding-left .15s ease, background .15s ease;
+  }
+
+  .item-row:hover{
+    background: #FBFAF7;
+    padding-left: 12px;
+  }
+
+  .item-row .index{
+    font-family:'Source Serif 4', serif;
+    font-size: 1.05rem;
+    color: var(--accent, var(--ink-soft));
+    min-width: 1.6em;
+  }
+
+  .item-row .label{
+    font-size: 1.02rem;
+  }
+
+  .item-row .arrow{
+    margin-left:auto;
+    color: var(--paper-line);
+    font-size: 1.1rem;
+  }
+
+  /* ---------- TOPIC / VIDEO VIEW ---------- */
+  .topic-header{
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--accent, var(--ink));
+  }
+
+  .topic-header .kicker{
+    font-size:0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .topic-header h2{
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin-top: 4px;
+  }
+
+  .video-wrap{
+    margin-top: 26px;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background: #12161F;
+    border: 1px solid var(--paper-line);
+  }
+
+  .video-wrap iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+
+  .video-missing{
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8A93A6;
+    font-size:0.95rem;
+    text-align:center;
+    padding: 20px;
+  }
+
+  .topic-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .nav-btn{
+    font-family:inherit;
+    font-size: 0.95rem;
+    padding: 10px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    cursor:pointer;
+    color: var(--ink);
+  }
+
+  .nav-btn:hover{ background:#FBFAF7; }
+  .nav-btn:disabled{ opacity:0.35; cursor:default; }
+  .nav-btn:disabled:hover{ background:var(--card-bg); }
+
+  @media (max-width:560px){
+    .header-inner{ flex-direction:column; align-items:flex-start; gap:6px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="brand">Aula de Estudio</span>
+    <nav class="breadcrumb" id="breadcrumb"></nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<script>
+/* =========================================================
+   DATOS DEL SITIO
+   -----------------------------------------------------------
+   Para agregar tu SEXTO curso, copia uno de los bloques de
+   abajo (por ejemplo "geometria"), pégalo antes del cierre "}"
+   de COURSES, y cambia su clave, nombre, color y contenidos.
+
+   Para poner el video de cada tema: entra al video en YouTube,
+   copia lo que aparece después de "v=" en la URL
+   (ej: https://www.youtube.com/watch?v=ABC12345xyz -> "ABC12345xyz")
+   y pégalo en "video".  Si un tema todavía no tiene video,
+   deja "video": "" y el sitio mostrará un aviso en su lugar.
+========================================================= */
+
+const COURSES = {
+  algebra: {
+    name: "Álgebra",
+    color: "#3B5BA5",
+    modules: makeModules("Álgebra")
+  },
+  aritmetica: {
+    name: "Aritmética",
+    color: "#2F8F72",
+    modules: makeModules("Aritmética")
+  },
+  comunicativa: {
+    name: "Competencia comunicativa",
+    color: "#C4622D",
+    modules: makeModules("Competencia comunicativa")
+  },
+  fisica: {
+    name: "Física",
+    color: "#6B4FA0",
+    modules: makeModules("Física")
+  },
+  geometria: {
+    name: "Geometría",
+    color: "#B0392B",
+    modules: makeModules("Geometría")
+  }
+};
+
+// Genera 4 módulos con 4 temas cada uno, con video vacío por defecto.
+// Edita los nombres de "Módulo X" y "Tema Y" a mano, curso por curso,
+// o déjalos así y solo cámbialos cuando tengas el contenido real.
+function makeModules(courseName){
+  const modules = [];
+  for(let m = 1; m <= 4; m++){
+    const topics = [];
+    for(let t = 1; t <= 4; t++){
+      topics.push({ name: `Tema ${t}`, video: "" });
+    }
+    modules.push({ name: `Módulo ${m}`, topics });
+  }
+  return modules;
+}
+
+/* ========================================================= */
+
+const app = document.getElementById('app');
+const breadcrumbEl = document.getElementById('breadcrumb');
+
+let state = { view: 'home', course: null, module: null, topic: null };
+
+function go(view, course, module, topic){
+  state = { view, course, module, topic };
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function render(){
+  renderBreadcrumb();
+  if(state.view === 'home') return renderHome();
+  if(state.view === 'course') return renderCourse();
+  if(state.view === 'module') return renderModule();
+  if(state.view === 'topic') return renderTopic();
+}
+
+function renderBreadcrumb(){
+  const c = state.course ? COURSES[state.course] : null;
+  const m = c && state.module !== null ? c.modules[state.module] : null;
+  const t = m && state.topic !== null ? m.topics[state.topic] : null;
+
+  let html = `<button onclick="go('home')">Inicio</button>`;
+  if(c){
+    html += `<span class="sep">/</span>`;
+    html += m ? `<button onclick="go('course','${state.course}')">${c.name}</button>`
+              : `<span class="current">${c.name}</span>`;
+  }
+  if(m){
+    html += `<span class="sep">/</span>`;
+    html += t ? `<button onclick="go('module','${state.course}',${state.module})">${m.name}</button>`
+              : `<span class="current">${m.name}</span>`;
+  }
+  if(t){
+    html += `<span class="sep">/</span><span class="current">${t.name}</span>`;
+  }
+  breadcrumbEl.innerHTML = html;
+}
+
+function renderHome(){
+  let cards = '';
+  for(const key in COURSES){
+    const c = COURSES[key];
+    cards += `
+      <button class="course-card" style="--accent:${c.color}" onclick="go('course','${key}')">
+        <span class="dot"></span>
+        <div>
+          <div class="name">${c.name}</div>
+          <div class="meta">4 módulos · 4 temas por módulo</div>
+        </div>
+      </button>`;
+  }
+
+  app.innerHTML = `
+    <section class="hero">
+      <h1>Cinco cursos, organizados en módulos y temas.</h1>
+      <p>Elige un curso para avanzar por sus módulos y ver el video de cada tema.</p>
+    </section>
+    <div class="course-grid">${cards}</div>
+  `;
+}
+
+function renderCourse(){
+  const c = COURSES[state.course];
+  let rows = '';
+  c.modules.forEach((m, i) => {
+    rows += `
+      <button class="item-row" style="--accent:${c.color}" onclick="go('module','${state.course}',${i})">
+        <span class="index">${i+1}</span>
+        <span class="label">${m.name}</span>
+        <span class="arrow">›</span>
+      </button>`;
+  });
+
+  app.innerHTML = `
+    <div class="list-header" style="--accent:${c.color}">
+      <div class="kicker">Curso</div>
+      <h2>${c.name}</h2>
+    </div>
+    <div class="item-list">${rows}</div>
+  `;
+}
+
+function renderModule(){
+  const c = COURSES[state.course];
+  const m = c.modules[state.module];
+  let rows = '';
+  m.topics.forEach((t, i) => {
+    rows += `
+      <button class="item-row" style="--accent:${c.color}" onclick="go('topic','${state.course}',${state.module},${i})">
+        <span class="index">${i+1}</span>
+        <span class="label">${t.name}</span>
+        <span class="arrow">›</span>
+      </button>`;
+  });
+
+  app.innerHTML = `
+    <div class="list-header" style="--accent:${c.color}">
+      <div class="kicker">${c.name}</div>
+      <h2>${m.name}</h2>
+    </div>
+    <div class="item-list">${rows}</div>
+  `;
+}
+
+function renderTopic(){
+  const c = COURSES[state.course];
+  const m = c.modules[state.module];
+  const t = m.topics[state.topic];
+
+  const videoHtml = t.video
+    ? `<iframe src="https://www.youtube.com/embed/${t.video}" title="${t.name}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    : `<div class="video-missing">Todavía no se agregó el video de este tema.<br>Edita "video" en el archivo index.html.</div>`;
+
+  const prevDisabled = state.topic === 0;
+  const isLastTopic = state.topic === m.topics.length - 1;
+
+  app.innerHTML = `
+    <div class="topic-header" style="--accent:${c.color}">
+      <div class="kicker">${c.name} · ${m.name}</div>
+      <h2>${t.name}</h2>
+    </div>
+    <div class="video-wrap">${videoHtml}</div>
+    <div class="topic-nav">
+      <button class="nav-btn" ${prevDisabled ? 'disabled' : ''} onclick="go('topic','${state.course}',${state.module},${state.topic-1})">Tema anterior</button>
+      <button class="nav-btn" ${isLastTopic ? 'disabled' : ''} onclick="go('topic','${state.course}',${state.module},${state.topic+1})">Siguiente tema</button>
+    </div>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>
